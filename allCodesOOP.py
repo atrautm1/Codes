@@ -59,4 +59,16 @@ class dnaTests():
                 self.istrue = False
                 return self.istrue
 
-a = dnaTests('ASDGCBFHDNSmshdncbvhgsdyfccgc')
+class fileParser:
+
+    def __init__(self,infile):
+        with open(str(infile),'r') as readFile:
+            self.file = readFile.readlines()
+        self.printLines(self.file)
+
+    def printLines(self, infile):
+        for line in infile:
+            line = line.strip()
+            print(line, '\n')
+
+a = fileParser('anagram.py')
