@@ -30,6 +30,11 @@ class dnaTests():
         self.seq = dnaseq
         self.countDNABases(self.seq)
         self.calcGCContent(self.seq)
+        self.testBase(self.seq)
+        if self.istrue is False:
+            print('The DNA sequence contains unknown characters')
+        else:
+            print('The DNA sequence contains only ACTG (no unknown characters)')
 
     def countDNABases(self,DNA):
         countA = DNA.upper().count('A')
@@ -45,6 +50,13 @@ class dnaTests():
         print ('The GC content in the DNA sequence is: ' + str(GCPerc) + '%')
 
     def testBase(self, DNA):
-        
+        bases = ['A','G','T','C']
+        self.istrue = True
+        for char in DNA.upper():
+            if char in bases:
+                continue
+            else:
+                self.istrue = False
+                return self.istrue
 
 a = dnaTests('ASDGCBFHDNSmshdncbvhgsdyfccgc')
