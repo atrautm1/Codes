@@ -59,6 +59,21 @@ class dnaTests():
         else:
             print('The DNA sequence contains only ACTG (no unknown characters)')
 
+    def reverseSeq(self):
+        rev_seq = ''
+        for x in self.seq.upper():
+        	if x == 'A':
+        		rev_seq += 'T'
+        	elif x == 'T':
+        		rev_seq += 'A'
+        	elif x == 'G':
+        		rev_seq += 'C'
+        	elif x == 'C':
+        		rev_seq += 'G'
+        	else:
+        		rev_seq += '*'
+        print ('The reverse sequence is: ' + rev_seq[::-1])
+
 class fileParser:
 
     def __init__(self,infile):
@@ -144,3 +159,7 @@ class genBankParser():
             gc.calcGCContent
         except:
             print('No sequence stored under origin.. Are you really sure this is a GenBank file??')
+
+
+a = dnaTests('AGCHAGHFHAgchagchhgtgacga')
+a.reverseSeq()
