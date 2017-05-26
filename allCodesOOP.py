@@ -1,5 +1,7 @@
 #!/usr/local/bin/python3
 
+#Created by Aaron Trautman
+
 """These are the combination of all the codes that I have written,
 rewritten in Object Oriented Programming style... It's a work in progress"""
 
@@ -21,3 +23,28 @@ class anagram():
                 print("The two strings are anagrams")
             else:
                 print("No, the two strings are not anagrams")
+
+class dnaTests():
+
+    def __init__(self,dnaseq):
+        self.seq = dnaseq
+        self.countDNABases(self.seq)
+        self.calcGCContent(self.seq)
+
+    def countDNABases(self,DNA):
+        countA = DNA.upper().count('A')
+        countT = DNA.upper().count('T')
+        countG = DNA.upper().count('G')
+        countC = DNA.upper().count('C')
+        print("The amount of each base in the DNA sequence is: " + str(countA) + 'A, '+ str(countT) + 'T, '+ str(countG) + 'G, '+ str(countC) + 'C, ')
+
+    def calcGCContent(self, DNA):
+        baseLength = len(DNA)
+        countGC = DNA.upper().count('C') + DNA.upper().count('G')
+        GCPerc = round(countGC/baseLength * 100, 2)
+        print ('The GC content in the DNA sequence is: ' + str(GCPerc) + '%')
+
+    def testBase(self, DNA):
+        
+
+a = dnaTests('ASDGCBFHDNSmshdncbvhgsdyfccgc')
