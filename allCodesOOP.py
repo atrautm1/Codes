@@ -120,6 +120,7 @@ class genBankParser():
                         count+= 1
                 except:
                     print("Is this a genbank file?")
+                    break
 
     def get_Sequence(self):         #Grabs the sequence stored under the "ORIGIN" line
         with open(self.file, 'r') as innie:
@@ -143,9 +144,3 @@ class genBankParser():
             gc.calcGCContent
         except:
             print('No sequence stored under origin.. Are you really sure this is a GenBank file??')
-
-g = genBankParser('anagram.py')
-g.get_OrgAccVer()
-g.get_Sequence()
-g.get_Exon()
-g.seq_GC_content()
