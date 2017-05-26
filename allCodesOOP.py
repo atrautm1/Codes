@@ -62,13 +62,17 @@ class dnaTests():
 class fileParser:
 
     def __init__(self,infile):
+        self.openFile(infile)
+        self.printLines(self.file)
+
+    def openFile(self, infile):
         with open(str(infile),'r') as readFile:
             self.file = readFile.readlines()
-        self.printLines(self.file)
 
     def printLines(self, infile):
         for line in infile:
             line = line.strip()
             print(line, '\n')
 
+#    def
 a = fileParser('anagram.py')
