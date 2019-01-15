@@ -1,7 +1,7 @@
-#!/anaconda/bin/python3
+#!/Library/Frameworks/Python.framework/Versions/3.6/bin/python3
 
-"""This was a basic attempt at a hidden markov model using python.. 
-I never got around to completing it, but I thought it was interesting 
+"""This was a basic attempt at a hidden markov model using python..
+I never got around to completing it, but I thought it was interesting
 to show. I wrote it to help with calculating HMM probabilities for a
 Molecular Sequence Analysis course."""
 
@@ -17,33 +17,33 @@ F = 0.005
 fairDict = {'1':1/6,'2':1/6,'3':1/6,'4':1/6,'5':1/6,'6':1/6}
 loadDict = {'1':1/10,'2':1/10,'3':1/10,'4':1/10,'5':1/10,'6':1/2}
 
-thingamabob = input("Enter thingamabob here: ")
+sequence = input("Enter sequence here: ")
 
 fairProbsf = []
 loadProbsf = []
 
-initialfairProbf = fairDict.get(thingamabob[0])*1*A1
-initialloadProbf = loadDict.get(thingamabob[0])*1*A2
+initialfairProbf = fairDict.get(sequence[0])*1*A1
+initialloadProbf = loadDict.get(sequence[0])*1*A2
 fairProbsf.append(initialfairProbf)
 loadProbsf.append(initialloadProbf)
 
 count = 1
 
-while count < len(thingamabob):
+while count < len(sequence):
     if count == 1:
-        fairProbsf.append(fairDict.get(thingamabob[count])*(initialfairProbf*B+(A1*E)))
-        loadProbsf.append(loadDict.get(thingamabob[count])*(initialloadProbf*C+(A2*D)))
+        fairProbsf.append(fairDict.get(sequence[count])*(initialfairProbf*B+(A1*E)))
+        loadProbsf.append(loadDict.get(sequence[count])*(initialloadProbf*C+(A2*D)))
         count = count + 1
     else:
-        fairProbsf.append(fairDict.get(thingamabob[count])*(fairProbsf[count-1]*B+A1*E))
-        loadProbsf.append(loadDict.get(thingamabob[count])*(loadProbsf[count-1]*C+A2*D))
+        fairProbsf.append(fairDict.get(sequence[count])*(fairProbsf[count-1]*B+A1*E))
+        loadProbsf.append(loadDict.get(sequence[count])*(loadProbsf[count-1]*C+A2*D))
         count = count + 1
 
 endProbf = (loadProbsf[len(loadProbsf)-1]*F)+(fairProbsf[len(fairProbsf)-1]*F)
 
 pathF = []
 count = 0
-while count < len(thingamabob):
+while count < len(sequence):
         if float(fairProbsf[count]) > float(loadProbsf[count]):
             pathF.append("F")
             count += 1
@@ -64,17 +64,17 @@ initialloadProbR = F
 fairProbsR.append(initialfairProbR)
 loadProbsR.append(initialloadProbR)
 
-count = len(thingamabob)-1
+count = len(sequence)-1
 othercount = 1
 
 while count > 0:
-    if count == len(thingamabob):
-        fairProbsR.append(fairDict.get(thingamabob[count])*(initialfairProbR*B+(A1*E)))
-        loadProbsR.append(loadDict.get(thingamabob[count])*(initialloadProbR*C+(A2*D)))
+    if count == len(sequence):
+        fairProbsR.append(fairDict.get(sequence[count])*(initialfairProbR*B+(A1*E)))
+        loadProbsR.append(loadDict.get(sequence[count])*(initialloadProbR*C+(A2*D)))
         count = count - 1
     else:
-        fairProbsR.append(fairDict.get(thingamabob[count])*(fairProbsR[othercount-1]*B+(A1*E)))
-        loadProbsR.append(loadDict.get(thingamabob[count])*(loadProbsR[othercount-1]*C+(A2*D)))
+        fairProbsR.append(fairDict.get(sequence[count])*(fairProbsR[othercount-1]*B+(A1*E)))
+        loadProbsR.append(loadDict.get(sequence[count])*(loadProbsR[othercount-1]*C+(A2*D)))
         count = count - 1
         othercount += 1
 
@@ -82,7 +82,7 @@ endProbR = (loadProbsR[len(loadProbsR)-1]*F)+(fairProbsR[len(fairProbsR)-1]*F)
 
 pathR = []
 count = 0
-while count < len(thingamabob):
+while count < len(sequence):
     for item in fairProbsR:
         if float(fairProbsR[count]) > float(loadProbsR[count]):
             pathR.append("F")

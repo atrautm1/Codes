@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 
 #Created by Aaron Trautman
 
@@ -193,6 +193,3 @@ class statsTests():
         #Compute p-value
         print ('')
         print('Go here and input your data to get your p-value: http://onlinestatbook.com/2/calculators/t_dist.html')
-
-a = dnaTests('AGCHAGHFHAgchagchhgtgacga')
-a.reverseSeq()
